@@ -11,6 +11,8 @@ type Mutation {
     signup(name: String!, email: String!, password: String!): User!
     signin(email: String!, password: String!): User!
     signout: SuccessMessage
+    resetRequest(email: String!): SuccessMessage
+    resetPassword(resetToken: String!, password: String!, confirmPassword: String!): User!
 }
 
 type Query {
@@ -20,9 +22,9 @@ type Query {
     me: User
 }
 
-# type User {
-#   id: ID! @unique
-#   name: String!
-#   email: String! @unique
-#   permissions: [Permission]
-# }
+type User {
+  id: ID! 
+  name: String!
+  email: String!
+  permissions: [Permission!]!
+}
